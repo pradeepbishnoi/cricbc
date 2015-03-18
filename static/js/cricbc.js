@@ -86,19 +86,17 @@ $(document).ready(function(){
 			//batsmans=json_data.inngs_1.batsmans;
 			batsmans=json_data.batsmans_1;
 			console.log("inning" + json_score_dump.inning);
+			inning=json_score_dump.inning;
 			console.log(json_data.batsmans_1);
 			selec='#batsman-details'; //selec = "";
-				if ((json_score_dump.inning == 1) || (bowling_team == true)) {
-					console.log("1 " + bowling_team);
-					//batsmans=json_data.inngs_0.batsmans;
-					batsmans=json_data.batsmans_2;
-					if (batsmans === undefined) {
-						 batsmans=json_data.batsmans_1;
-					}
-					if (bowling_team === true){ 
-						selec='#team2-batsman-details'; 
-					}
+			if ((inning == 2) && (bowling_team == false)){
+				batsmans=json_data.batsmans_2;
+			}
+			else {
+				if (bowling_team == true){
+					selec='#team2-batsman-details'; 
 				}
+			}
 			$(selec).append("<tbody></tbody>");
 			selec = selec + ' > tbody:last';
 			console.log(selec);
