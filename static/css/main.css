@@ -1,0 +1,319 @@
+@import local(fonts.css);
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font: normal 24px Raleway Arial, sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+html {
+	height: 100%;
+	//background-color: black;
+	//background: url(../cricbc.jpg);
+	//background-size: cover;
+}
+
+body {
+	//background: url(../cricbc.jpg);
+  background-color: black;
+	font: normal 24px Raleway Arial, sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 5px 5px 5px 5px;
+  background-color: black;
+  //background: url(../cricbc.jpg);
+  font-family: Raleway, Arial, sans-serif;
+  //padding: 1em 2em;
+}
+
+img {
+  height: 1px;
+  width: 1px;
+}
+
+h1, h2 {
+  font-family: Raleway, Arial, sans-serif;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  //border-bottom: 2px solid #eee;
+  line-height: 1.5;
+}
+
+h3 {
+  margin-bottom: 1em;
+  //border-bottom: 2px solid #eee;
+  line-height: 1.5;
+}
+
+h4 {
+  color: cornflowerblue;
+}
+
+h1 > small{
+  color: #666;
+}
+
+h2 > small {
+	font-size: 16px;
+}
+
+h4 > small > a,
+p > a{
+	font-size: 14px;
+  color: #3CB371;
+  text-decoration: none;
+}
+h4 > small > a:hover,
+p > a:hover{
+  text-decoration: underline;
+}
+
+/* Buttons styles */
+input::-moz-focus-inner,
+button::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+input[type="submit"].btn,
+button.btn {
+	cursor: pointer;
+}
+
+.panel {
+  background-color: black;
+  color: beige;
+  
+}
+
+.panel-body {
+  font: normal 21px 'Raleway Arial', sans-serif;
+}
+
+.panel-default .panel-heading{
+  background-color: black;
+  text-align: center;
+  color: yellow;
+}
+
+.boxx {
+  position: relative;
+  width: 80%;
+  margin: -15px auto 15px;
+  border-radius: 0 0 4px 4px;
+  padding-bottom: 2px;
+  border: 1px solid;
+}
+
+.table>tbody>tr>td {
+  border-top : none;
+  padding-top: 5px;
+  padding-bottom: 2px;
+  font: normal 18px 'Raleway Arial' sans-serif;
+  color: beige;
+  //text-align: left;
+}
+
+.table tbody tr td:nth-child(3) {
+  font: normal 14px 'Raleway Arial' sans-serif;
+}
+#bowler-details.table>tbody>tr>td,
+#batsman-details.table>tbody>tr>td, #team2-batsman-details.table>tbody>tr>td {
+  font: normal 14px 'Raleway Arial' sans-serif;
+  color: aliceblue;
+  border-bottom: 1px groove gray; 
+  text-align:right;
+}
+
+#bowler-details.table>tbody>tr>td:nth-child(1),
+#batsman-details.table>tbody>tr>td:nth-child(1),
+#team2-batsman-details.table>tbody>tr>td:nth-child(1) {
+    text-align:left;
+}
+
+.table>tbody>tr.notout {
+  color: red;
+}
+
+a.btn,.btn {
+  margin-right: 1em; /* remove this while use*/
+  margin-bottom: 1em; /* remove this while use*/
+	display: inline-block;
+	outline: none;
+	*zoom: 1;
+	text-align: center;
+	text-decoration: none;
+	font-family: inherit;
+	font-weight: 300;
+	letter-spacing: 1px;
+	vertical-align: middle;
+	border: 1px solid;
+	transition: all 0.2s ease;
+	box-sizing: border-box;
+	text-shadow: 0 1px 0 rgba(0,0,0,0.01);
+  font: normal 23px 'Raleway Arial' sans-serif;
+}
+/* Radius */
+.btn-radius {
+  border-radius: 3px;
+}
+/* Sizes */
+.btn-small {
+	font-size: 0.8125em;
+	padding: 0.4125em 1.25em;
+}
+.btn-medium {
+	font-size: 0.9375em;
+	padding: 0.5375em 1.375em;
+}
+.btn-large {
+	font-size: 1.0625em;
+	padding: 0.5625em 1.5em;
+}
+
+/* Colors */
+.btn-green {
+	color: #3CB371;
+	border-color: #3CB371;
+}
+
+.btn-green:hover, .btn-green:focus {
+  background: #3CB371;
+  color: #fff;
+  border-color: #3CB371;		
+}
+
+.btn-blue {
+	color: #4682B4;
+	border-color: #4682B4;
+}
+.btn-blue:hover, .btn-blue:focus {
+  background: #4682B4;
+  color: #fff;
+  border-color: #4682B4;		
+}
+
+.btn-orange {
+	color: #FF8C00;
+	border-color: #FF8C00;
+}
+.btn-orange:hover, .btn-orange:focus{
+  background: #FF8C00;
+  color: #fff;
+  border-color: #FF8C00;		
+}
+
+.btn-red {
+	color: #B22222;
+	border-color: #B22222;
+}
+.btn-red:hover, .btn-red:focus{
+  background: #B22222;
+  color: #fff;
+  border-color: #B22222;	
+}
+
+.btn-gray {
+	color: #808080;
+	border-color: #808080;
+}
+.btn-gray:hover, .btn-grey:focus{
+  background: #808080;
+  color: #fff;
+  border-color: #808080;	
+}
+
+.btn-green, .btn-gray, .btn-blue, .btn-red, .btn-orange {
+  color: aliceblue;
+}
+
+.wrapper-deck {
+ 	width:300px;
+  margin:30px auto;
+  box-shadow:
+    0 2px 1px 2px rgba(0,0,0,0.3);
+  border-radius:0.3em;
+}
+
+.wrapper-deck h1 {
+ 	border:1px solid rgba(0,0,0,0.4);
+  border-radius:0.3em 0.3em 0 0;
+  padding:10px;
+  color:white;
+  font-weight:bold;
+  text-shadow:0 1px 0 rgba(0,0,0,0.3);
+  background:linear-gradient(45deg, #5c8dbd, #6fa1d1);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    0 2px 1px rgba(0,0,0,0.3);
+}
+
+.main-deck {
+ 	border-bottom:1px dashed #c7cacd;
+  text-align:center;
+  font-weight:bold;
+  font-size:13px;
+  padding:60px 0;
+  border-left:1px solid rgba(0,0,0,0.4);
+  border-right:1px solid rgba(0,0,0,0.4);
+}
+
+.footer-deck {
+ 	padding:15px 10px;
+  color:#888;
+  font-size:12px;
+  border:1px solid rgba(0,0,0,0.4);
+  border-top:none;
+  border-radius:0 0 0.3em 0.3em;
+  box-shadow:
+    0 1px 0 #dcdcdc,
+    0 2px 0 rgba(0,0,0,0.4),
+    0 3px 0 #dcdcdc;
+}
+
+.plans {
+  width: 836px;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+.plan {
+  float: left;
+  width: 150px;
+  margin: 20px 2px;
+  padding: 15px 25px;
+  text-align: center;
+  background: white;
+  background-clip: padding-box;
+  border: 2px solid #e5ded6;
+  border-color: rgba(black, .1);
+  border-radius: 5px;
+}
+
+.plan-recommended {
+  width: 160px;
+  margin: -15px auto 15px;
+  padding-bottom: 2px;
+  line-height: 22px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 1px rgba(black, .05);
+  background: #37bbe6;
+  border-radius: 0 0 4px 4px;
+}

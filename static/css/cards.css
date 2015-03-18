@@ -1,0 +1,81 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+@import url(http://fonts.googleapis.com/css?family=Ropa+Sans);
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: normal 24px Raleway Arial, sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+html {
+  height: 100%;
+  //background-color: black;
+  background: url(../cricbc.jpg);
+  //background-size: cover;
+}
+
+body {
+  //background: url(../cricbc.jpg);
+  width: 90%;
+  height: 90%;
+  background-color: transparent;
+  font: normal 24px Raleway Arial, sans-serif;
+}
+
+.container {
+  background-color: transparent;
+  font-family: Raleway, Arial, sans-serif;
+}
+
+.panel {
+  background-color: transparent;
+
+}
+
+.plans {
+  width: 100%;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+.plan {
+  float: left;
+  width: 80%;
+  margin: 20px 2px;
+  padding: 15px 25px;
+  text-align: center;
+  background: white;
+  background-clip: padding-box;
+  border: 2px solid #e5ded6;
+  border-color: rgba(black, .1);
+  border-radius: 5px;
+}
+
+.plan-recommended {
+  width: 80%;
+  margin: -15px auto 15px;
+  padding-bottom: 2px;
+  line-height: 22px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 1px rgba(black, .05);
+  background: #37bbe6;
+  border-radius: 0 0 4px 4px;
+}
+
+.plan-recommended a {
+  font-size: 8px;
+}

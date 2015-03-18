@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Polylines</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+
+
+<div id='map'></div>
+
+<script>
+L.mapbox.accessToken = 'pk.eyJ1IjoicHJhZGVlcGJpc2hub2kiLCJhIjoiYUFaREo3SSJ9.3E3V9S9QM-nQyINAiSF7Ag';
+var map = L.mapbox.map('map', 'examples.map-i86nkdio')
+    .setView([12.9144313, 77.6131282], 17);
+
+// Define circle options
+// http://leafletjs.com/reference.html#circle
+var circle_options = {
+    color: '#fff',      // Stroke color
+    opacity: 1,         // Stroke opacity
+    weight: 10,         // Stroke weight
+    fillColor: '#000',  // Fill color
+    fillOpacity: 0.6    // Fill opacity
+};
+
+var circle_one = L.circle([38.89415, -77.03738], 20, circle_options).addTo(map);
+var circle_two = L.circle([38.89415, -77.03578], 20, circle_options).addTo(map);
+
+// Create array of lat,lon points.
+var line_points1 = [[77.6198733370442,12.9158217898469],[77.6199476261948,12.9153829602313],[77.6199314405755,12.9147271285029],[77.6198121770318,12.913745235921],[77.621026,12.913957],[77.621321,12.913459],[77.619796930818,12.9136197143763],[77.6197481405755,12.9132180260161],[77.6197366376507,12.9131323816956],[77.6195153376508,12.9116289787033],[77.6193520066411,12.9109748982428],[77.6190633119841,12.9103633553002],[77.6186599186996,12.9098169420159],[77.6185061723859,12.9096760567136],[77.615414,12.895776],[77.6137557534739,12.8947447993481],[77.6079323920344,12.8953815925382],[77.6060968067642,12.8957573059929],[77.604369,12.898897],[77.599659,12.915058],[77.599602,12.917009],[77.602076,12.92339],[77.606888,12.932401],[77.607338,12.932741],[77.610395,12.932381],[77.611472,12.931579],[77.619661,12.924013],[77.620666,12.919385],[77.6198733370442,12.9158217898469]];
+
+
+function swap_line(line_points){
+    var new_points =[];
+    for(var i = 0, l = line_points.length; i < l; i++) {
+        new_points.push([line_points[i][1],line_points[i][0]]);
+    }
+    console.log(new_points);
+    return new_points;
+}
+
+line_points=swap_line(line_points1);
+// Define polyline options
+// http://leafletjs.com/reference.html#polyline
+var polyline_options = {
+    color: '#000'
+};
+
+// Defining a polygon here instead of a polyline will connect the
+// endpoints and fill the path.
+// http://leafletjs.com/reference.html#polygon
+var polyline = L.polyline(line_points, polyline_options).addTo(map);
+</script>
+
+
+</body>
+</html>
