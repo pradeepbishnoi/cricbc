@@ -96,11 +96,16 @@ $(document).ready(function(){
 				batsmans=json_data.batsmans_2;
 			}
 			else {
+				batsmans=[];
+				batsmans.push({'status': '', 'sixes': '', 'runs': '', 'balls': '', 'name': '', 'fours': ''});
+				//console.log(batsmans);
 				if (bowling_team == true){
-					selec='#team2-batsman-details'; 
-					batsmans=[]
-					batsmans.append({'status': '', 'sixes': '', 'runs': '', 'balls': '', 'name': '', 'fours': ''});
+					selec='#team2-batsman-details';
+					console.log("Selec" + selec); 
+					batsmans=json_data.batsmans_1;
+					console.log("Selec" + batsmans); 
 				}
+				//console.log("Batsman" + batsmans);
 			}
 			$(selec).append("<tbody></tbody>");
 			selec = selec + ' > tbody:last';

@@ -50,7 +50,7 @@ def batting_parser(bat_soup):
                     status.append(sib.string)
             batsman_score.append({'name' : row.td.a.string, 'status': status[0], 'runs': status[1], 'balls': status[2], 'fours': status[3], 'sixes': status[4]})
         except Exception as e:
-            print "Nonetype", e
+            pass #print "Nonetype", e
     return batsman_score
 
 def bowler_parser(bowl_soup):
@@ -63,7 +63,7 @@ def bowler_parser(bowl_soup):
 
 def parse_full_score():
     resp=requests.get(FULL_SCORE)
-    print "Response Code" ,type(resp.status_code)
+    #print "Response Code" ,resp.status_code
     #if resp.status_code is 200:
         #print "Here response code"
         #return {"empty" : "true"}
@@ -84,8 +84,8 @@ def parse_full_score():
         #json_full_score = {"empty": "true"}
     except Exception as e:
         print "Exception", e
-        #json_full_score = {"empty": "true"}
-    print json_full_score
+        pass #json_full_score = {"empty": "true"}
+    #print json_full_score
     return json_full_score
 
 def fetch_score():
@@ -93,9 +93,9 @@ def fetch_score():
     score_card_new=[]
     score_card_dict={}
     #print "Score", time.time()
-    print "Fetch Score " , app.config["NEW_URL"]
+    #print "Fetch Score " , app.config["NEW_URL"]
     score = requests.get(app.config["NEW_URL"]) #session["URL"])
-    print "Got response from server"
+    #print "Got response from server"
     score_json = score.json()
     #print score_json[-2]['batteamruns'], score_json[-2]['batteamovers']
     try:
@@ -138,13 +138,13 @@ def admin():
     if request.method == 'POST':
         global new_url
         new_url = BASE_URL + request.form['new_url'] + END_URL
-        print app.config["NEW_URL"]
+        #print app.config["NEW_URL"]
         app.config["NEW_URL"]=new_url
     return render_template('admin.html')
 
 @app.route('/', methods = ['GET'])
 def index():
-    print app.config["NEW_URL"]
+    #print app.config["NEW_URL"]
     return render_template('cric.html')
 
 @app.route('/full_score_1', methods = ['POST', 'GET'])
@@ -166,7 +166,7 @@ def full_score_update():
 
 @app.route('/score', methods = ['POST', 'GET'])
 def score_update():
-    print "Fetching Score"
+    #print "Fetching Score"
     fetch_score()
     #print score_card
     #score_card_dict['batsman'] = score_card_new
