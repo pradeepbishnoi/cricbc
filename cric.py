@@ -26,11 +26,7 @@ team_name_map={ "RSA": "South Africa"
 score_card={}
 score_card_new=[]
 score_card_dict={}
-BASE_URL="http://www.cricbuzz.com/livecricketscore"
-END_URL="/commentary-push.json?1"
-new_url=BASE_URL + "/2015/2015_WC/BAN_IND_MAR19" + END_URL
-FULL_SCORE="http://www.cricbuzz.com/live-cricket-scorecard-ajax/12898/"
-FULL_SCORE_1="http://www.cricbuzz.com/cricket-scorecard/12898"
+new_url=""
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key='F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
@@ -62,7 +58,7 @@ def bowler_parser(bowl_soup):
             print "Bowler Parser Exception", e
 
 def parse_full_score():
-    resp=requests.get(FULL_SCORE)
+    resp=requests.get(app.config["FULL_SCORE"])
     #print "Response Code" ,resp.status_code
     #if resp.status_code is 200:
         #print "Here response code"
@@ -137,8 +133,7 @@ def fetch_score():
 def admin():
     if request.method == 'POST':
         global new_url
-        new_url = BASE_URL + request.form['new_url'] + END_URL
-        #print app.config["NEW_URL"]
+        new_url = request.form['new_url']
         app.config["NEW_URL"]=new_url
     return render_template('admin.html')
 
@@ -147,9 +142,10 @@ def index():
     #print app.config["NEW_URL"]
     return render_template('cric.html')
 
+#Another version to parse Full Score
 @app.route('/full_score_1', methods = ['POST', 'GET'])
 def full_score_update_1():
-    cricbc=CricParser(FULL_SCORE_1)
+    cricbc=CricParser(app.config["FULL_SCORE_1"])
     inngs_1 = cricbc.full_score_json(cricbc.soup, "Inngs_1")
     inngs_0 = cricbc.full_score_json(cricbc.soup, "Inngs_0")
     temp = {"inngs_0": inngs_0, "inngs_1": inngs_1}

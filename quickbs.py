@@ -1,12 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 
-url="http://www.cricbuzz.com/cricket-scorecard/12896/ire-vs-pak-42nd-match-pool-b-icc-cricket-world-cup-2015"
-r=requests.get(url)
-print "Status Code",r.status_code
-
-soup=BeautifulSoup(r.text)
-
 class CricParser(object):
     def __init__(self, url):
         self.url=url
@@ -90,6 +84,7 @@ class CricParser(object):
             return {"empty": "true"}
 
 if __name__=='__main__':
+    url=""
     obj = CricParser(url)
     print obj.full_score_json(obj.soup, "Inngs_1")
     print
