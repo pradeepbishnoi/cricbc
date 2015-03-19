@@ -95,6 +95,11 @@ button.btn {
 	cursor: pointer;
 }
 
+span.break_state {
+  color: dodgerblue;
+  font-size: 20px;
+}
+
 .panel {
   background-color: black;
   color: beige;
@@ -213,7 +218,7 @@ a.btn,.btn {
 	border-color: #FF8C00;
 }
 .btn-orange:hover, .btn-orange:focus{
-  background: #FF8C00;
+  #background: #FF8C00;
   color: #fff;
   border-color: #FF8C00;		
 }

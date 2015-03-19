@@ -6,7 +6,7 @@ $(document).ready(function(){
 	json_score_dump = "";
 	json_full_score_dump = "";
 	//Calling the ajax_call_score when page is ready
-	ajax_call_score
+	ajax_call_score();
 	//ajax_call_full_score();
 
 	setInterval(function() {
@@ -31,7 +31,7 @@ $(document).ready(function(){
 				//console.log(data.bat_team_runs);
 				update_scorecard(data);
 				json_score_dump = data;
-				ajax_call_full_score();
+				//ajax_call_full_score();
 			});
 	};
 
@@ -56,11 +56,14 @@ $(document).ready(function(){
 				//update_scorecard(data);
 			});
 	};
+
 	function update_scorecard(json_data){
 		$("#batting_score").text(json_data.bat_team_runs);
 		$("#batting_overs").text(json_data.bat_team_overs);
 		$("#batting_wickets").text(json_data.bat_team_wickets);
 		$("#match_result").text(json_data.match_result);
+		temp = "<br/><span class='break_state'>" + json_data.break_state + "</span>";
+		$("#match_result").append(temp);
 		$("#batting_team").text(json_data.bat_team); //.append("<span class='boxx'>HI</span>");
 		$("#bowling_team").text(json_data.bowl_team);
 		score_target = "" + json_data.target;

@@ -28,9 +28,9 @@ score_card_new=[]
 score_card_dict={}
 BASE_URL="http://www.cricbuzz.com/livecricketscore"
 END_URL="/commentary-push.json?1"
-new_url=BASE_URL + "/2015/2015_WC/SL_RSA_MAR18" + END_URL
-FULL_SCORE="http://www.cricbuzz.com/live-cricket-scorecard-ajax/12897/"
-FULL_SCORE_1="http://www.cricbuzz.com/cricket-scorecard/12897"
+new_url=BASE_URL + "/2015/2015_WC/BAN_IND_MAR19" + END_URL
+FULL_SCORE="http://www.cricbuzz.com/live-cricket-scorecard-ajax/12898/"
+FULL_SCORE_1="http://www.cricbuzz.com/cricket-scorecard/12898"
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key='F12Zr47j\3yX R~X@H!jmM]Lwf/,?KT'
@@ -98,36 +98,40 @@ def fetch_score():
     print "Got response from server"
     score_json = score.json()
     #print score_json[-2]['batteamruns'], score_json[-2]['batteamovers']
-    score_card_dict['bat_team_runs']=score_json[-2]['batteamruns']
-    score_card_dict['bat_team_overs']=score_json[-2]['batteamovers']
-    score_card_dict['bat_team_wickets']=score_json[-2]['batteamwkts']
-    score_card_dict['match_result']=score_json[-2]['status']
-    score_card_dict['team1']=score_json[-2]['team1']
-    score_card_dict['team2']=score_json[-2]['team2']
-    score_card_dict['bat_team']=team_name_map[score_json[-2]['batteamname']]
-    score_card_dict['inning']=score_json[-2]['currentInng']
-    if score_card_dict['inning'] == "1" :
-        score_card_dict['match_result'] = score_card_dict['bat_team'] + "   is batting first"
-    score_card_dict['match_state']=score_json[-2]['match_state']
-    score_card_dict['curr_run_rate']=score_json[-2]['curr_runrate']
-    score_card_dict['break_state']=score_json[-2]['break_state']
-    score_card_dict['venue']=score_json[-2]['venue_city'] + ',' + score_json[-2]['venue_country']
-    score_card_dict['target']=score_json[-2]['bwlteamdesc']
-    score_card_dict['bowl_team']=team_name_map[score_json[-2]['bwlteamname']]
+    try:
+        score_card_dict['team1']=score_json[-2]['team1']
+        score_card_dict['team2']=score_json[-2]['team2']
+        score_card_dict['break_state']=score_json[-2]['break_state'].strip()
+        score_card_dict['match_result']=score_json[-2]['status']
+        score_card_dict['inning']=score_json[-2]['currentInng']
+        score_card_dict['venue']=score_json[-2]['venue_city'] + ',' + score_json[-2]['venue_country']
+        if score_card_dict['inning'] == "1" :
+            score_card_dict['match_result'] = score_card_dict['bat_team'] + "   is batting first"
+        elif score_card_dict['inning'] == "0":
+            score_card_dict['match_result'] = "Match NOT started"
+        score_card_dict['bat_team']=team_name_map[score_json[-2]['batteamname']]
+        score_card_dict['bat_team_runs']=score_json[-2]['batteamruns']
+        score_card_dict['bat_team_overs']=score_json[-2]['batteamovers']
+        score_card_dict['bat_team_wickets']=score_json[-2]['batteamwkts']
+        score_card_dict['match_state']=score_json[-2]['match_state']
+        score_card_dict['curr_run_rate']=score_json[-2]['curr_runrate']
+        score_card_dict['bowl_team']=team_name_map[score_json[-2]['bwlteamname']]
+        score_card_dict['target']=score_json[-2]['bwlteamdesc']
 
-    for idx, bowler in enumerate(score_json[-2]['batsman']):
-        batsman=score_json[-2]['batsman'][idx]
-        score_card_new.append({'name': batsman['name'], 'runs': batsman['runs'], 'balls': batsman['balls_faced'], 'fours': batsman['fours'], 'sixes': batsman['sixes']})
+        for idx, bowler in enumerate(score_json[-2]['batsman']):
+            batsman=score_json[-2]['batsman'][idx]
+            score_card_new.append({'name': batsman['name'], 'runs': batsman['runs'], 'balls': batsman['balls_faced'], 'fours': batsman['fours'], 'sixes': batsman['sixes']})
 
-    score_card_dict['batsmans']=score_card_new    
-    score_card_new=[]
-    
-    for idx, bowler in enumerate(score_json[-2]['bowler']):
-        bowler=score_json[-2]['bowler'][idx]
-        score_card_new.append({'name': bowler['name'], 'runs': bowler['runs'], 'overs': bowler['overs'], 'wickets': bowler['wickets'], 'maidens': bowler['maidens']})
-    
-    score_card_dict['bowlers']=score_card_new
-    
+        score_card_dict['batsmans']=score_card_new    
+        score_card_new=[]
+        
+        for idx, bowler in enumerate(score_json[-2]['bowler']):
+            bowler=score_json[-2]['bowler'][idx]
+            score_card_new.append({'name': bowler['name'], 'runs': bowler['runs'], 'overs': bowler['overs'], 'wickets': bowler['wickets'], 'maidens': bowler['maidens']})
+        
+        score_card_dict['bowlers']=score_card_new
+    except Exception as e:
+        print "Exception while getting JSON", e
 
 @app.route('/admin', methods = ['GET', 'POST'])
 def admin():
