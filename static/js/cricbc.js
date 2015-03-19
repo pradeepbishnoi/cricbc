@@ -157,6 +157,8 @@ $(document).ready(function(){
 	$( "#batting_score" ).click(function() {
 	  $( "#details" ).toggle( "fast", function() {
 	  	console.log("Visible ?" + $('#details').is(':visible'));
+	  	try
+	  	{
 	  	if ($('#details').is(':visible') == true) {
 	  		console.log("SHOW");
 		    update_batsmen_score(json_score_dump);
@@ -169,12 +171,16 @@ $(document).ready(function(){
 			//console.log($("#batting_score").is(':focus'));
 	  		//console.log($("#batting_score").hasClass('active'));
 	  	}
+	  }catch (ex) {
+	  	console.log("Exception" + ex);
+	  }
 	  });
 	});
 
 	$( "#batting_overs" ).click(function() {
 	  $( "#bowl-details" ).toggle( "fast", function() {
 	  	console.log("Visible ?" + $('#details').is(':visible'));
+	  	try{
 	  	if ($('#bowl-details').is(':visible') == true) {
 	  		console.log("SHOW");
 		    update_bowler_score(json_score_dump);
@@ -187,6 +193,9 @@ $(document).ready(function(){
 			//console.log($("#batting_score").is(':focus'));
 	  		//console.log($("#batting_score").hasClass('active'));
 	  	}
+	  	}catch (ex) {
+	  	console.log("Exception" + ex);
+	  }
 	  });
 	});
 
