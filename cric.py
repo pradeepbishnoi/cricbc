@@ -105,11 +105,11 @@ def fetch_score():
         score_card_dict['match_result']=score_json[-2]['status']
         score_card_dict['inning']=score_json[-2]['currentInng']
         score_card_dict['venue']=score_json[-2]['venue_city'] + ',' + score_json[-2]['venue_country']
-        if score_card_dict['inning'] == "1" :
-            score_card_dict['match_result'] = score_card_dict['bat_team'] + "   is batting first"
-        elif score_card_dict['inning'] == "0":
+        if score_card_dict['inning'] == "0":
             score_card_dict['match_result'] = "Match NOT started"
         score_card_dict['bat_team']=team_name_map[score_json[-2]['batteamname']]
+        if score_card_dict['inning'] == "1" :
+            score_card_dict['match_result'] = score_card_dict['bat_team'] + "   is batting first"
         score_card_dict['bat_team_runs']=score_json[-2]['batteamruns']
         score_card_dict['bat_team_overs']=score_json[-2]['batteamovers']
         score_card_dict['bat_team_wickets']=score_json[-2]['batteamwkts']
