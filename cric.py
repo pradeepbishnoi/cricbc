@@ -168,7 +168,7 @@ def full_score_update():
 def score_update():
     #print "Fetching Score"
     fetch_score()
-    #print score_card
+    ##print score_card
     #score_card_dict['batsman'] = score_card_new
     #print score_card_dict
     return jsonify(score_card_dict)
