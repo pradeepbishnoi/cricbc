@@ -31,7 +31,7 @@ $(document).ready(function(){
 				//console.log(data.bat_team_runs);
 				update_scorecard(data);
 				json_score_dump = data;
-				//ajax_call_full_score();
+				ajax_call_full_score();
 			});
 	};
 
@@ -98,6 +98,8 @@ $(document).ready(function(){
 			else {
 				if (bowling_team == true){
 					selec='#team2-batsman-details'; 
+					batsmans=[]
+					batsmans.append({'status': '', 'sixes': '', 'runs': '', 'balls': '', 'name': '', 'fours': ''});
 				}
 			}
 			$(selec).append("<tbody></tbody>");
