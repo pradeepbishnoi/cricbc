@@ -91,25 +91,32 @@ $(document).ready(function(){
 			console.log("inning" + json_score_dump.inning);
 			inning=json_score_dump.inning;
 			console.log(json_data.batsmans_1);
+            console.log("Inning ", inning, typeof(inning));
 			selec='#batsman-details'; //selec = "";
-			if ((inning == 2) && (bowling_team == false)){
-				batsmans=json_data.batsmans_2;
-			}
-			else {
-				batsmans=[];
-				batsmans.push({'status': '', 'sixes': '', 'runs': '', 'balls': '', 'name': '', 'fours': ''});
-				//console.log(batsmans);
-				if (bowling_team == true){
-					selec='#team2-batsman-details';
-					console.log("Selec" + selec); 
-					batsmans=json_data.batsmans_1;
-					console.log("Selec" + batsmans); 
-				}
-				//console.log("Batsman" + batsmans);
-			}
+            switch(inning)
+            {
+            case "2":
+                if (bowling_team == false){
+                    batsmans=json_data.batsmans_2;
+                    console.log("Case 2" + batsmans);
+                } else{
+                    selec="#team2-batsman-details";  
+                    console.log("Case 2" + selec);
+                }
+                break;
+            case "1":
+                if (bowling_team == true){
+                    selec='#team2-batsman-details';
+                    console.log("Case 1" + selec); 
+                    batsmans=[];
+                    console.log("Case 1" + batsmans); 
+                }
+                break;
+            }
+			
 			$(selec).append("<tbody></tbody>");
 			selec = selec + ' > tbody:last';
-			console.log(selec);
+			console.log(selec)
 			console.log(batsmans);
 			for (x=0; x<batsmans.length; x++){
 				console.log("test" + x);
